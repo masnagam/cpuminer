@@ -112,8 +112,8 @@ void applog(int prio, const char *fmt, ...)
 			tm.tm_sec,
 			fmt);
 		pthread_mutex_lock(&applog_lock);
-		vfprintf(stderr, f, ap);	/* atomic write to stderr */
-		fflush(stderr);
+		vfprintf(stdout, f, ap);	/* atomic write to stdout */
+		fflush(stdout);
 		pthread_mutex_unlock(&applog_lock);
 	}
 	va_end(ap);
